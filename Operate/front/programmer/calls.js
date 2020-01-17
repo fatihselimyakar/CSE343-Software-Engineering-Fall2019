@@ -12,4 +12,15 @@ document.getElementById("ProjectPathButton").addEventListener('click', function(
 	document.getElementById("ProjectPath").value = "";
 	document.getElementById("ProjectName").value = "";
 });
-
+document.getElementById("SqlProjectPathButton").addEventListener('click', function(){
+	socket.emit('upload', {
+		origin:"4",
+		destination: "2",
+		action: "uploadsql",
+		ProjectName: document.getElementById("ProjectName").value,
+		ProjectPath: document.getElementById("ProjectPath").value
+		
+	});
+	document.getElementById("ProjectPath").value = "";
+	document.getElementById("ProjectName").value = "";
+});

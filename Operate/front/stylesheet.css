@@ -23,7 +23,14 @@ body {
 
   margin: auto;
 }
-
+.button-left{
+    float: left;
+    width: 50%;
+}
+.button-right{
+    float: right;
+    width: 50%;
+}
 #mario-chat{
     max-width: 600px;
     margin: 30px auto;
@@ -76,6 +83,8 @@ input{
 }
 
 button{
+    all
+    display: inline-block;
     background: #6495ED;
     color: #fff;
     font-size: 18px;

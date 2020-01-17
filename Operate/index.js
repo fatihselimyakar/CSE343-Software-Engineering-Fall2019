@@ -40,6 +40,9 @@ io.on('connection', function(socket){
 	socket.on('newProject', function(data){
 		newProjectPost(data)
 	});
+	socket.on('newtask', function(data){
+		newTaskPost(data)
+	});
 	
 });
 
@@ -102,6 +105,21 @@ function assignmentPost(jsonData){
 		);
 }
 function newProjectPost(jsonData){
+	request.post(
+		'http://localhost:8081',
+		{
+			json: jsonData
+		},
+		function (error, response, body) {
+			if (!error && response.statusCode == 200) {
+				// no problems
+			} else {
+				console.log("Error!!!!");
+			}
+		}
+	);
+}
+function newTaskPost(jsonData){
 	request.post(
 		'http://localhost:8081',
 		{
