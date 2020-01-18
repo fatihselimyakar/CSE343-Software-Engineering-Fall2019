@@ -3,7 +3,7 @@ var socket = io.connect('http://localhost:4001');
 
 
 document.getElementById("AssignmentButton").addEventListener('click', function(){
-	socket.emit('assignment', {
+	socket.emit('post', {
 		origin:"4",
 		destination: "2",
 		action: "assignment",		
@@ -19,7 +19,7 @@ document.getElementById("AssignmentButton").addEventListener('click', function()
 });
 
 document.getElementById("NewTaskButton").addEventListener('click', function(){
-	socket.emit('newtask', {
+	socket.emit('post', {
 		origin:"4",
 		destination: "2",
 		action: "newtask",		
@@ -37,7 +37,7 @@ document.getElementById("NewTaskButton").addEventListener('click', function(){
 
 
 document.getElementById("UndeployButton").addEventListener('click', function(){
-	socket.emit('undeploy', {
+	socket.emit('post', {
 		origin:"4",
 		destination: "2",
 		action: "undeploy",

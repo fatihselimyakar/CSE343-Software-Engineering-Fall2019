@@ -1,7 +1,7 @@
 var socket = io.connect('http://localhost:4001');
 
 document.getElementById("ProjectPathButton").addEventListener('click', function(){
-	socket.emit('upload', {
+	socket.emit('post', {
 		origin:"4",
 		destination: "2",
 		action: "upload",
@@ -13,7 +13,7 @@ document.getElementById("ProjectPathButton").addEventListener('click', function(
 	document.getElementById("ProjectName").value = "";
 });
 document.getElementById("SqlProjectPathButton").addEventListener('click', function(){
-	socket.emit('upload', {
+	socket.emit('post', {
 		origin:"4",
 		destination: "2",
 		action: "uploadsql",

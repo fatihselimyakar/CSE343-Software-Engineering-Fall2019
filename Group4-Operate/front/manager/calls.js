@@ -1,7 +1,7 @@
 var socket = io.connect('http://localhost:4001');
 
 document.getElementById("newProjectStartButton").addEventListener('click', function(){
-	socket.emit('newProject', {
+	socket.emit('post', {
 		origin:"4",
 		destination: "2",
 		action: "newProject",
@@ -10,7 +10,7 @@ document.getElementById("newProjectStartButton").addEventListener('click', funct
 	document.getElementById("newProjectName").value = "";
 });
 document.getElementById("UndeployButton").addEventListener('click', function(){
-	socket.emit('undeploy', {
+	socket.emit('post', {
 		origin:"4",
 		destination: "2",
 		action: "undeploy",
