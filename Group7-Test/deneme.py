@@ -8,17 +8,20 @@ import subprocess
 
 data = json.loads(testData)
 address = data["repository_url"]
-address = address.replace("https://","https://"+data["github_login"]+":"+data["github_password"]+"@")
+git_id = data["github_login"]
+git_pass = data["github_password"]
+target_pass = data["targetPswd"]
+addressClone = address.replace("https://","https://"+git_id+":"+git_pass+"@")
 
 
-projectName = subprocess.check_output(['basename', address, ".git"])
+projectName = subprocess.check_output(['basename', addressClone, ".git"])
 projectName = projectName[:-1]
 
 def start_testing():
     print("Project Name: "+projectName)
     print("Cloning Repo...")
     os.system("pwd")
-    os.system("git clone "+address)
+    os.system("git clone "+addressClone)
     filePath = subprocess.check_output(["pwd"])
     filePath = filePath[:-1]
     os.chdir(filePath+"/"+projectName)
@@ -44,8 +47,12 @@ def create_json():
         data = {}
         data["origin"] = 7
         data["destination"] = 2
+        data["git_id"] = git_id
+        data["git_pass"] = git_pass
         data["testresult"] = "fail"
-        data["repository_url"] = address
+        data["deployment"] = "nodeploy"
+        data["targetPswd"] = target_pass
+        data["repoUrl"] = address
         data["failures"] = int(parse_result().attrib["failures"])
         data["cases"] = {}
         data["cases"]["tests"] = parse_result().attrib["tests"]
@@ -64,8 +71,12 @@ def create_json():
         data = {}
         data["origin"] = 7
         data["destination"] = 2
+        data["git_id"] = git_id
+        data["git_pass"] = git_pass
         data["testresult"] = "success"
-        data["repository_url"] = address
+        data["deployment"] = "deploy"
+        data["targetPswd"] = target_pass
+        data["repoUrl"] = address
         data["failures"] = int(parse_result().attrib["failures"])
         data["cases"] = {}
         data["cases"]["tests"] = parse_result().attrib["tests"]
